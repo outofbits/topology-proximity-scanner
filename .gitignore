@@ -1,0 +1,7 @@
+build/
+.idea/
+*.iml
+topology-proximity-scanner
+*.csv
+*.json
+vendor/
