@@ -9,7 +9,7 @@ import (
 )
 
 const defaultAppName = "topology-proximity-scanner"
-const appVersion = "1.0.0"
+const appVersion = "1.0.1"
 
 // checks whether a file exists at the given path.
 func fExists(name string) bool {

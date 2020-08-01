@@ -30,3 +30,9 @@ topology-proximity-scanner -i <topology-file-path> [-n <number>][-o <csv-output-
   -o string
         optional path to a csv file to which results shall be written
 ```
+
+
+Example:
+```
+topology-proximity-scanner -i topology.json -n 10 -o results.csv
+```
