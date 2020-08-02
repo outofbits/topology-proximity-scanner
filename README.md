@@ -29,6 +29,9 @@ topology-proximity-scanner -i <topology-file-path> [-n <number>][-o <csv-output-
         number of data points to collect for each node (default 3)
   -o string
         optional path to a csv file to which results shall be written
+  -p int
+        number of parallel pings (default 10)
+  -v    print the version of this application
 ```
 
 
