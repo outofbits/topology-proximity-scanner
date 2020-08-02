@@ -5,6 +5,7 @@ import (
     "github.com/cloverstd/tcping/ping"
     "github.com/outofbits/stakepool-ops-lib/topology"
     "net"
+    "os"
     "time"
 )
 
@@ -58,6 +59,9 @@ func scanHost(node topology.NodeConfig, nDataPoints int, resultChan chan []ScanR
             results = append(results, result)
         }
         resultChan <- results
+    } else {
+        resultChan <- make([]ScanResult, 0)
+       _,_ = fmt.Fprintf(os.Stderr, "Address could not be resovled for '%s'.\n", node.HostAddress)
     }
 }
 
