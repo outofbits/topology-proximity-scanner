@@ -36,7 +36,7 @@ func main() {
     input := flag.String("i", "", "path to the topology file")
     output := flag.String("o", "", "optional path to a csv file to which results shall be written")
     dataPoints := flag.Int("n", 3, "number of data points to collect for each node")
-    parallePings := flag.Int("p", 10, "number of parallel pings")
+    parallelPings := flag.Int("p", 10, "number of parallel pings")
     version := flag.Bool("v", false, "print the version of this application")
     flag.Parse()
 
@@ -48,16 +48,16 @@ func main() {
     if *input != "" {
         if fExists(*input) {
             if *dataPoints <= 0 {
-                _, _ = fmt.Fprintf(os.Stderr, "The given number of data points must be greater than zero.")
+                _, _ = fmt.Fprintf(os.Stderr, "The given number of data points must be greater than zero.\n")
                 os.Exit(1)
             }
-            if *parallePings <= 0 {
-                _, _ = fmt.Fprintf(os.Stderr, "The given number of parallel pings must be greater than zero.")
+            if *parallelPings <= 0 {
+                _, _ = fmt.Fprintf(os.Stderr, "The given number of parallel pings must be greater than zero.\n")
                 os.Exit(1)
             }
             var topologyConfig, err = topology.ReadTopologyFile(*input)
             if err == nil {
-                results := scanner.Scan(topologyConfig.Producers, *dataPoints, *parallePings)
+                results := scanner.Scan(topologyConfig.Producers, *dataPoints, *parallelPings)
                 if *output != "" {
                     err = csv.WriteScanResult(results, *output)
                     if err != nil {
@@ -67,7 +67,7 @@ func main() {
                     }
                 }
             } else {
-                _, _ = fmt.Fprintf(os.Stderr, "Could not parse the specified topology file\"%s\". %s.\n", *input,
+                _, _ = fmt.Fprintf(os.Stderr, "Could not parse the specified topology file \"%s\". %s.\n", *input,
                     err.Error())
                 os.Exit(1)
             }
